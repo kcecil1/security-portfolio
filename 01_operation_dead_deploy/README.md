@@ -6,6 +6,13 @@ A coworker mentioned that an intern had deployed resources, so I was assigned to
 
 ## Environment
 
+This investigation took place in a live, multi user Azure training tenant with Reader access so I could examine resources without altering evidence.
+Tools used:
+* Resource groups list
+* Storage accounts Overview, tags blade, JSON View
+* Resource Group Deployments blade and deployment detail.
+* Resource group Policies blade (Compliance and Assignments)
+
 ## Investigation
 
 ## What Broke / what surprised me
