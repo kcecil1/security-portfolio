@@ -93,9 +93,28 @@ from the policy definition's default rather than being set during
 assignment. This is consistent with nobody deliberately choosing Audit; it
 was a default that was never reviewed.
 
-## What Broke / what surprised me
+## What broke / what surprised me
 
-
+* **Nothing would have alerted me.** When I first looked at the subscription,
+  nothing stood out. The naming policy was set to Audit, which flags
+  violations on the compliance dashboard but notifies no one. Detection
+  depended entirely on someone happening to look.
+* **Cost reporting wouldn't have caught it either.** My first thought was
+  that unexpected spend would surface it, but an empty storage account costs
+  pennies, and its cost center tag was a placeholder. Cost based detection
+  catches expensive mistakes, not cheap risky ones.
+* **The role assignment was hidden in plain sight.** The resource group
+  showed one resource, but the deployment record showed two. The second was
+  a role assignment, which can act as persistence after temporary access
+  expires. I only found it because I opened the deployment details.
+* **The network was open by default.** I didn't expect a new storage account
+  to be reachable from any network on the internet without anyone
+  deliberately choosing that.
+* **I misread the timestamps at first.** I compared the JSON's UTC time to
+  the portal's local time and thought they were hours apart. Converted
+  to UTC, they matched to the second. Lesson: build timelines in UTC.
+* **I skipped the JSON View on my first pass** and had to go back. Several of
+  the most important configuration findings were only visible there.
 
 ## Findings and recommendations
 
