@@ -76,9 +76,26 @@ intern's temporary access expires, and whoever received that role keeps their
 permissions. I did not identify the principal that received the role during
 this investigation; reviewing it is a recommended follow up.
 
+### Stage 4: Why policy didn't stop it
 
+The resource group's Policies blade showed the naming convention policy as
+non compliant. The assignment was scoped to the subscription, so it applied
+to the anomalous resource group through inheritance. Before concluding why it
+failed to block the deployment, I ruled out the other ways a policy can be
+bypassed: there were no excluded scopes, no exemptions, and policy
+enforcement was enabled.
+
+That left the effect. On the assignment's Parameters tab, the Effect
+parameter was set to Audit. Audit allows a non compliant request to succeed
+and only flags the resource; Deny is the effect that would have blocked it.
+The parameter reference type was "Default value," meaning the effect came
+from the policy definition's default rather than being set during
+assignment. This is consistent with nobody deliberately choosing Audit; it
+was a default that was never reviewed.
 
 ## What Broke / what surprised me
+
+
 
 ## Findings and recommendations
 
