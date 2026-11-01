@@ -139,3 +139,20 @@ was a default that was never reviewed.
 
 ## What I learned
 
+* **Mindset over memorization.** I won't remember every blade, but I'm
+  building an analyst's habits: verify the configuration instead of trusting
+  the briefing, rule things out before concluding, and look for anything that
+  survives after access expires.
+* **Reachable isn't the same as accessible.** An account open to any network
+  still requires valid credentials. Network exposure and data exposure are
+  separate findings, and stating them separately keeps the conclusion
+  accurate.
+* **Role assignments don't appear in a resource group's resource list.** They
+  only show up in Access control (IAM) and in the deployment record, which
+  makes them easy to miss and worth checking deliberately.
+* **Writing it up is where the understanding happened.** Putting my reasoning
+  on paper forced me to understand each step well enough to explain it to
+  someone else.
+* **Next time, I'd slow down during the lab.** I'd work to understand why each
+  step matters as I go, instead of chasing the next flag and backfilling the
+  understanding afterward.
