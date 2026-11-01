@@ -54,6 +54,28 @@ roughly six months, well past a 90 day rotation baseline.
 
 This combination is consistent with a deployment that relied on default settings with no hardening. The pattern is not someone setting a bad config, but someone not setting a config at all.
 
+### Stage 3: Tracing the deployment
+
+The resource group's Deployments blade listed a single deployment. Its name
+suggested who owned it (an intern), what it was for (a test), and the year.
+Automated pipelines typically name deployments with build numbers or commit
+hashes, so a name that reads like a human typed it indicates the deployment
+was run manually. Combined with the TLS 1.0 default from Stage 2, this is
+consistent with a template or script launched by hand, outside any pipeline.
+
+The deployment's start time matched the storage account's creationTime and
+keyCreationTime in the JSON to within one second (May 24, 2026, 21:42 UTC).
+Because three separate records agree, the evidence is corroborated: this
+deployment created the storage account.
+
+The deployment details also showed a second resource: a role assignment.
+Role assignments do not appear in a resource group's resource list, so it
+was only visible in the deployment record. This is arguably more significant
+than the storage account itself, because a role assignment persists after the
+intern's temporary access expires, and whoever received that role keeps their
+permissions. I did not identify the principal that received the role during
+this investigation; reviewing it is a recommended follow up.
+
 
 
 ## What Broke / what surprised me
