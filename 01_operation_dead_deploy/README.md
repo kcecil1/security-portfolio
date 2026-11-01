@@ -15,7 +15,7 @@ Tools used:
 
 ## Investigation
 
-### Stage 1
+### Stage 1: Locating the anomaly
 
 While reviewing the subscription's resource groups, I found one entry that
 didn't match the `rg-<workload>-<environment>-<region>-<instance>` naming
