@@ -118,5 +118,24 @@ was a default that was never reviewed.
 
 ## Findings and recommendations
 
+1. **Review the role assignment created by the deployment.** Identify who
+   received it and what role. If it isn't justified, remove it. Also review
+   who holds temporary Contributor access and confirm it expires. This comes
+   first because it's the only finding that could represent active access.
+2. **Harden the storage account.** Raise the minimum TLS version to 1.2,
+   restrict network access to approved networks, and rotate the account keys
+   or disable shared key access in favor of Entra ID authentication.
+3. **Move the naming policy from Audit to Deny.** Clean up existing
+   violators first, since Deny blocks new and updated resources but doesn't
+   fix what already exists. If Audit is intentional, document why.
+4. **Alert on policy non compliance.** Audit only works if someone sees the
+   result. An alert on policy events would have surfaced this deployment the
+   day it happened.
+5. **Require meaningful tag values.** Checking that tags exist isn't enough;
+   restrict values like environment to an approved list so placeholders
+   can't pass.
+6. **Restrict allowed regions.** A policy limiting deployments to approved
+   regions would have blocked the East US deployment outright.
+
 ## What I learned
 
